@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://party/Party.tscn" type="PackedScene" id=1]
+[ext_resource path="res://party/PlayerParty.gd" type="Script" id=2]
+[ext_resource path="res://party/PlayerCamera.gd" type="Script" id=3]
+
+[node name="PlayerParty" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="PlayerCamera" type="Camera2D" parent="." index="3"]
+current = true
+script = ExtResource( 3 )
+

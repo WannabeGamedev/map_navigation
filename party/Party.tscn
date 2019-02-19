@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://party/Party.gd" type="Script" id=1]
+[ext_resource path="res://party/PartyBody.gd" type="Script" id=2]
+[ext_resource path="res://party/PartyVision.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+extents = Vector2( 30, 30 )
+
+[sub_resource type="CircleShape2D" id=1]
+
+radius = 800.0
+
+[node name="Party" type="Position2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Body" type="Area2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+shape = SubResource( 2 )
+
+[node name="Vision" type="Area2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+shape = SubResource( 1 )
+
+[connection signal="activation_request" from="Body" to="Body" method="_on_activation_request"]
+[connection signal="area_entered" from="Body" to="Body" method="_on_area_entered"]
+[connection signal="deactivation_request" from="Body" to="Body" method="_on_deactivation_request"]
+[connection signal="make_invisible_request" from="Body" to="." method="_on_make_invisible_request"]
+[connection signal="make_visible_request" from="Body" to="." method="_on_make_visible_request"]
+[connection signal="area_entered" from="Vision" to="Vision" method="_on_area_entered"]
+[connection signal="area_exited" from="Vision" to="Vision" method="_on_area_exited"]

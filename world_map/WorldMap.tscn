@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://world_map/WorldMap.gd" type="Script" id=1]
+[ext_resource path="res://assets/Tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://world_map/TileMap.gd" type="Script" id=3]
+
+[node name="WorldMap" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Nav" type="Navigation2D" parent="."]
+
+[node name="Tiles" type="TileMap" parent="Nav"]
+mode = 1
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 128, 64 )
+format = 1
+script = ExtResource( 3 )
+
+[node name="Parties" type="Node" parent="."]
+
+[node name="Player" type="Node" parent="Parties"]
+
+[node name="Others" type="Node" parent="Parties"]
+
